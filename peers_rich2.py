@@ -1,8 +1,8 @@
 import subprocess
 import json
 from datetime import datetime
-from rich.console import Console
-from rich.table import Table
+from rich.console import Console # type: ignore
+from rich.table import Table # type: ignore
 from time import sleep
 import sys
 import termios
