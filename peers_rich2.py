@@ -41,13 +41,17 @@ def decode_services(services_hex):
     return ", ".join(services_list)
 
 def connection_duration(connected_since):
-    """Convert connection timestamp to duration (hh:mm:ss)."""
+    """Convert connection timestamp to duration (hh:mm:ss) or number of days"""
     connected_time = datetime.fromtimestamp(connected_since)
     current_time = datetime.now()
     duration = current_time - connected_time
     hours, remainder = divmod(duration.total_seconds(), 3600)
     minutes, seconds = divmod(remainder, 60)
-    return f"{int(hours):02}:{int(minutes):02}:{int(seconds):02}"
+    days = duration.total_seconds() / 86400
+    if days <= 1:
+        return f"{int(hours):02}:{int(minutes):02}:{int(seconds):02}"
+    else:
+        return f"{(days):.1f} days"
 
 def format_pingtime(pingtime):
     """Format ping time to three decimal places."""
