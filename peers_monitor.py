@@ -112,7 +112,7 @@ def build_peer_table(peers):
             str(peer['id']),
             connection_duration(peer.get('conntime', 0)),
             services,
-            truncate_with_ellipsis(peer.get('subver', 'Unknown'), 23),
+            truncate_with_ellipsis(peer.get('subver', 'Unknown'), 20),
             str(peer.get('version', 99)),
             f"{peer['bytessent'] / 1_048_576:.2f} MB",
             f"{peer['bytesrecv'] / 1_048_576:.2f} MB",
