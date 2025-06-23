@@ -71,10 +71,9 @@ def connection_duration(connected_since):
 
 def format_pingtime(pingtime):
     """Format ping time to three decimal places."""
-    if pingtime == "N/A":
-        return pingtime
     try:
-        return f"{float(pingtime):3f} ms"
+        milliseconds = int(pingtime * 1000)
+        return f"{milliseconds:03d} ms"
     except ValueError:
         return "N/A"
 
