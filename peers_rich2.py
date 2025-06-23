@@ -4,10 +4,6 @@ from datetime import datetime
 from rich.console import Console # type: ignore
 from rich.table import Table # type: ignore
 from time import sleep
-import sys
-import termios
-import tty
-import threading
 
 # Define service flags as constants
 NODE_NETWORK = 1 << 0
