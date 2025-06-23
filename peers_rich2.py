@@ -1,13 +1,33 @@
-import subprocess
+"""
+Bitcoin Peer Monitor
+
+This script periodically queries a local Bitcoin Core node using `bitcoin-cli getpeerinfo` 
+and displays a formatted table of peer connection data in the terminal. It shows 
+information such as connection duration, services advertised, version, ping time, 
+and data throughput. The table refreshes every 15 seconds and highlights peers that 
+do not advertise the NODE_NETWORK service.
+
+Dependencies:
+  - rich (for console table formatting)
+
+Run with:
+  Ensure `bitcoin-cli` is in your PATH and configured to connect to your node.
+  Press Ctrl+C to exit.
+
+Author: [Your Name or GitHub handle] (optional)
+"""
+
 import json
+import subprocess
+from time import sleep
 from datetime import datetime
+
 from rich.console import Console # type: ignore
 from rich.table import Table # type: ignore
-from time import sleep
 
-# Define service flags as constants
-NODE_NETWORK = 1 << 0
-NODE_WITNESS = 1 << 3
+# Service flags (bitmask values)
+NODE_NETWORK         = 1 << 0
+NODE_WITNESS         = 1 << 3
 NODE_COMPACT_FILTERS = 1 << 6
 NODE_NETWORK_LIMITED = 1 << 10
 
@@ -90,19 +110,15 @@ def build_peer_table(peers):
 
         row = [
             str(peer['id']),
-            # peer['addr'],
             connection_duration(peer.get('conntime', 0)),
             services,
-            truncate_with_ellipsis(peer['subver'], 23),
-            str(peer['version']),
+            truncate_with_ellipsis(peer.get('subver', 'Unknown'), 23),
+            str(peer.get('version', 99)),
             f"{peer['bytessent'] / 1_048_576:.2f} MB",
             f"{peer['bytesrecv'] / 1_048_576:.2f} MB",
             format_pingtime(peer.get('pingtime', 'N/A')),
             'Yes' if peer['inbound'] else '',
-            # str(peer['synced_headers']),
-            # str(peer['synced_blocks']),
             'Yes' if peer['relaytxes'] else ''
-            # str(peer.get('banscore', 'N/A'))
         ]
 
         # Highlight rows missing NODE_NETWORK service
