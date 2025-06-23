@@ -14,7 +14,7 @@ Run with:
   Ensure `bitcoin-cli` is in your PATH and configured to connect to your node.
   Press Ctrl+C to exit.
 
-Author: [Your Name or GitHub handle] (optional)
+Author: Michael O'Connor
 """
 
 import json
