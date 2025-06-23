@@ -19,16 +19,15 @@ with peer data including connection time, services, version, traffic stats, and 
 
 ## 📦 Installation
 
-```bash
-git clone https://github.com/mikeoc61/bitcoin_peer_monitor.git
-cd bitcoin_peer_monitor
-pip install rich
+- git clone https://github.com/mikeoc61/bitcoin_peer_monitor.git
+- cd bitcoin_peer_monitor
+- pip install rich
 
 ## 🚀 Usage
 
 Make sure your Bitcoin Core node is running and `bitcoin-cli` is accessible. Then run:
-``` bash
-python peers_monitor.py
+
+- python peers_monitor.py
 
 Use `Ctrl+C` to exit.
 
