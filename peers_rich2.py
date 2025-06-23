@@ -120,6 +120,6 @@ if __name__ == "__main__":
                 peers = get_peer_info()
                 table = build_peer_table(peers)
                 screen.update(table)
-                sleep(10)  # Refresh every 10 seconds
+                sleep(15)  # Refresh periodically
         except KeyboardInterrupt:
             console.print("[bold red]Exiting...[/bold red]")
