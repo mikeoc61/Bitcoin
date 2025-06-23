@@ -89,7 +89,7 @@ def build_peer_table(peers):
     # Define table headers
     headers = [
         "ID", "Connected", "Services", "Version",
-        "Protocol","Bytes Out", "Bytes In", "Ping",
+        "Proto","Bytes Out", "Bytes In", "Ping",
         "Inbound", "Relay"
     ]
 
