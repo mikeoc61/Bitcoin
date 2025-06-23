@@ -74,7 +74,7 @@ def format_pingtime(pingtime):
     if pingtime == "N/A":
         return pingtime
     try:
-        return f"{float(pingtime):.3f}"
+        return f"{float(pingtime):.3f} ms"
     except ValueError:
         return "N/A"
 
