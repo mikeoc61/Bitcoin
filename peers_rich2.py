@@ -63,18 +63,17 @@ def format_pingtime(pingtime):
         return "N/A"
 
 def truncate_with_ellipsis(s, N):
+    """Crop strings and append elipses if string exceed N length"""
     return s[:N] + "..." if len(s) > N else s
 
 def build_peer_table(peers):
-    """Build a table of peer data."""
+    """Build a table of connected peer data."""
     table = Table(title="Bitcoin Peer Monitor")
 
     # Define table headers
     headers = [
         "ID", "Connected", "Services", "Version",
-        #"Protocol", "Bytes Out", "Bytes In", "Ping Time",
         "Protocol","Bytes Out", "Bytes In", "Ping",
-        # "Direction", "Synced Headers", "Synced Blocks", "Ban Score", "Relays TX"
         "Inbound", "Relay"
     ]
 
