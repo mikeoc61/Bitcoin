@@ -73,7 +73,7 @@ def format_pingtime(pingtime):
     """Format ping time to three decimal places."""
     try:
         milliseconds = int(pingtime * 1000)
-        return f"{milliseconds:03d} ms"
+        return f"{milliseconds:3d} ms"
     except ValueError:
         return "N/A"
 
@@ -93,7 +93,7 @@ def build_peer_table(peers):
     ]
 
     # Control table value alignment based on header
-    right_align = ["ID", "Connected", "Bytes In", "Bytes Out", "Direction", "Relay"]
+    right_align = ["ID", "Connected", "Bytes Out", "Bytes In", "Ping"]
 
     # Add headers to the table
     for header in headers:
